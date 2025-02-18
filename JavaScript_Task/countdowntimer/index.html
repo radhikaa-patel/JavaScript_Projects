@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <p id="display">0</p>
+            <button id="start" onclick="doStart()">Start</button>
+            <button id="pause" onclick="doPause()">Pause</button>
+            <button id="stop" onclick="doStop()">Stop</button>
+            <script>
+                var intervalId;
+                var num = 0;
+                function doStart() {
+                    if (!intervalId) {
+                        intervalId = setInterval(function () {
+                            if (num < 10) {
+                                num++;
+                                document.getElementById("display").innerHTML = num;
+                            }
+                        }, 1000);
+                    }
+                }
+                function doPause() {
+                    clearInterval(intervalId);
+                    intervalId = null;
+                }
+                function doStop() {
+                    clearInterval(intervalId);
+                    intervalId = null;
+                    num = 0;
+                    document.getElementById("display").innerHTML = num;
+                }
+
+
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

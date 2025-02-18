@@ -1,0 +1,37 @@
+.container {
+    height: 300px;
+    width: 420px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 150px;
+    margin-left: 470px;
+    background-color: antiquewhite;
+
+}
+
+.container:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    padding: 13px;
+    margin-left: 94px;
+}
+
+.semicontent {
+    margin-left: 44px;
+}
+
+
+.gst {
+    margin-left: 90px;
+}
+
+#btn {
+    margin-left: 120px;
+}
+
+.result {
+    margin-left: 115px;
+}

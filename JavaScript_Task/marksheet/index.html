@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        Firstname : <input type="text" id="fname" name="firstname" placeholder="Enter your first name">
+        Lastname : <input type="text" id="lname" name="lastname" placeholder="Enter your last name">
+
+        </br></br>
+
+        <table border="1">
+            <caption>Fill your marks in the given table!</caption>
+            <tr>
+                <th>Mathematics</th>
+                <th>Physics</th>
+                <th>Chemistry</th>
+                <th>Biology</th>
+            </tr>
+            <tr>
+                <td><input type="number" id="m"></td>
+                <td><input type="number" id="p"></td>
+                <td><input type="number" id="c"></td>
+                <td><input type="number" id="b"></td>
+            </tr>
+        </table>
+
+        <div class="btn">
+            <button id="submit" onclick="result()">View your result</button>
+        </div>
+
+
+        <div class="resulttable" style="display: none; margin-left: 280px; margin-top: 30px;">
+            <table border="1">
+                <tr>
+                    <td>Name</td>
+                    <td id="name"></td>
+                </tr>
+                <tr>
+                    <td>Subject</td>
+                    <td>Marks</td>
+                </tr>
+                <tr>
+                    <td>Mathematics</td>
+                    <td id="mark1"></td>
+                </tr>
+                <tr>
+                    <td>Physics</td>
+                    <td id="mark2"></td>
+                </tr>
+                <tr>
+                    <td>Chemistry</td>
+                    <td id="mark3"></td>
+                </tr>
+                <tr>
+                    <td>Biology</td>
+                    <td id="mark4"></td>
+                </tr>
+                <tr>
+                    <td>Total Marks</td>
+                    <td id="total"></td>
+                </tr>
+                <tr>
+                    <td>Percentage</td>
+                    <td id="per"></td>
+                </tr>
+                <tr>
+                    <td>Grade</td>
+                    <td id="grade"></td>
+                </tr>
+            </table>
+        </div>
+
+        <script>
+            function result() {
+
+                const fname = document.getElementById('fname').value;
+                const lname = document.getElementById('lname').value;
+                const mar1 = parseInt(document.getElementById('m').value) || 0;
+                const mar2 = parseInt(document.getElementById('p').value) || 0;
+                const mar3 = parseInt(document.getElementById('c').value) || 0;
+                const mar4 = parseInt(document.getElementById('b').value) || 0;
+
+                document.getElementById('name').innerText = fname + " " + lname;
+                document.getElementById('mark1').innerText = mar1;
+                document.getElementById('mark2').innerText = mar2;
+                document.getElementById('mark3').innerText = mar3;
+                document.getElementById('mark4').innerText = mar4;
+
+
+                const total = mar1 + mar2 + mar3 + mar4;
+                document.getElementById('total').innerText = total;
+
+                const perce = (total * 100) / 400;
+                document.getElementById('per').innerText = perce;
+                if (perce >= 90.50) {
+                    document.getElementById('grade').innerText = "A";
+                } else if (perce >= 80.50 && perce < 90.50) {
+                    document.getElementById('grade').innerText = "B";
+                }
+                else if (perce >= 80.50 && perce < 90.50) {
+                    document.getElementById('grade').innerText = "C";
+                }
+                else if (perce >= 70.50 && perce < 80.50) {
+                    document.getElementById('grade').innerText = "D";
+                }
+                else if (perce >= 60.50 && perce < 70.50) {
+                    document.getElementById('grade').innerText = "E";
+                } else if (perce >= 50.50 && perce < 60.50) {
+                    document.getElementById('grade').innerText = "F";
+                } else {
+                    document.getElementById('grade').innerText = "Fail";
+                }
+
+                document.querySelector('.resulttable').style.display = 'block';
+            }
+        </script>
+    </div>
+</body>
+
+</html>

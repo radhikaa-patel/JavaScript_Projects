@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Maker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Color Maker</h1>
+        
+        <div class="color-display" id="colorDisplay"></div>
+
+        <div class="sliders">
+            <label for="r">Red:</label>
+            <input type="range" id="r" min="0" max="255" value="255">
+            <br>
+            <label for="g">Green:</label>
+            <input type="range" id="g" min="0" max="255" value="255">
+            <br>
+            <label for="b">Blue:</label>
+            <input type="range" id="b" min="0" max="255" value="255">
+        </div>
+        
+        <button onclick="generateRandomColor()">Generate Random Color</button>
+
+        <div>
+            <p>Current Color: <span id="currentColor">rgb(255, 255, 255)</span></p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

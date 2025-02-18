@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card {
+            height: 280px;
+            width: 380px;
+            margin-top: 150px;
+            margin-left: 450px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            background-color: antiquewhite;
+        }
+
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            padding: 2px 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="container">
+            <h1>Guess the Number Game</h1>
+            <p>I'm thinking of a number between 1 and 100. Can you guess it?</p>
+
+            <input type="number" placeholder="enter your guess" id="guess">
+            <button id="btn" onclick="checkguess()">Guess!</button>
+            <p id="message"></p>
+            <p id="attempts"></p>
+            <script>
+                var randomNum = Math.floor(Math.random() * 100) + 1
+                var attempt = 0
+                function checkguess() {
+                    var userguess = document.getElementById('guess').value;
+                    attempt++;
+
+                    if (userguess > 100 || userguess < 1) {
+                        document.getElementById('message').innerHTML = "Please enter numbet between 1 to 100!"
+                    }
+                    else if (userguess == randomNum) {
+
+                        document.getElementById('message').innerHTML = "Hurrayyyyy! You guess the number."
+                        document.getElementById('attempts').innerHTML = `You guessed it in ${attempt} attempts.`
+                    } else if (userguess > randomNum) {
+
+                        document.getElementById('message').innerHTML = "Oops! You guess higher number."
+                    } else {
+
+                        document.getElementById('message').innerHTML = "Oops! You guess smaller number."
+
+                    }
+                    document.getElementById('guess').value = '';
+                }
+
+
+                const btn = document.getElementById('guess');
+
+
+                btn.addEventListener('keypress', function (event) {
+                    if (event.key === 'Enter') {
+                        checkguess();
+                    }
+                });
+
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

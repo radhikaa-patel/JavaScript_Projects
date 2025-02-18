@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <input type="number" id="num" placeholder="enter a number">
+            <button onclick="doIncrement()" id="inc">+</button>
+            <button onClick="doDecrement()" id="dec">-</button>
+            <p id="result"></p>
+            <script>
+
+                function doIncrement() {
+                    var number = parseInt(document.getElementById("num").value) || 0
+                    number++
+                    document.getElementById("num").value = number;
+                    document.getElementById("result").innerHTML = `After increment value is ${number}`
+                }
+                function doDecrement() {
+                    var number = parseInt(document.getElementById("num").value) || 0
+                    number--
+                    document.getElementById("num").value = number;
+                    document.getElementById("result").innerHTML = `After decrement value is ${number}`
+                }
+
+            </script>
+        </div>
+    </div>
+
+</body>
+
+</html>
