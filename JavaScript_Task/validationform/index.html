@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Form</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <h1>Registration Form</h1>
+    <div class="container">
+        <div class="content">
+            <form id="myForm">
+                <label for="name">Enter Name:</label>
+                <input type="text" id="name"><br><br>
+
+                <label for="mobileno">Enter Mobile No:</label>
+                <input type="text" id="mobileno"><br><br>
+
+                <label>Gender:</label>
+                <input type="radio" id="male" name="gender" value="Male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female">
+                <label for="female">Female</label><br><br>
+
+                <label>Hobbies:</label>
+                <input type="checkbox" id="read" value="reading">
+                <label for="read">Reading</label>
+                <input type="checkbox" id="dance" value="dancing">
+                <label for="dance">Dancing</label>
+                <input type="checkbox" id="sing" value="singing">
+                <label for="sing">Singing</label><br><br>
+
+                <label for="city">City:</label>
+                <select name="city" id="city">
+                    <option value="">--Select City--</option>
+                    <option value="Ahmedabad">Ahmedabad</option>
+                    <option value="Surat">Surat</option>
+                    <option value="Rajkot">Rajkot</option>
+                    <option value="Gandhinagar">Gandhinagar</option>
+                </select><br><br>
+
+                <input type="submit" value="Submit">
+            </form>
+
+            <div id="errorMessage" class="error"></div>
+            <div id="successMessage" class="success"></div>
+
+            <div id="result"></div>
+
+            <script>
+
+                document.getElementById("myForm").addEventListener("submit", function (event) {
+                    event.preventDefault();
+                    document.getElementById("errorMessage").innerHTML = "";
+                    document.getElementById("successMessage").innerHTML = "";
+                    document.getElementById("result").innerHTML = "";
+
+
+                    var name = document.getElementById("name").value;
+                    var mobileNo = document.getElementById("mobileno").value;
+                    var gender = document.querySelector('input[name="gender"]:checked');
+                    var hobbies = [];
+                    if (document.getElementById("read").checked) hobbies.push("Reading");
+                    if (document.getElementById("dance").checked) hobbies.push("Dancing");
+                    if (document.getElementById("sing").checked) hobbies.push("Singing");
+                    var city = document.getElementById("city").value;
+
+
+                    if (!name || !mobileNo || !gender || hobbies.length === 0 || !city) {
+                        document.getElementById("errorMessage").innerHTML = "All fields are required!";
+                        return;
+                    }
+                    var mobilePattern = /^[0-9]{10}$/;
+                    if (!mobilePattern.test(mobileNo)) {
+                        document.getElementById("errorMessage").innerHTML = "Please enter a valid mobile number (10 digits).";
+                        return;
+                    }
+                    document.getElementById("successMessage").innerHTML = "Form submitted successfully!";
+
+                    var resultHtml = `<h3>Submitted Data:</h3>
+                              <p><strong>Name:</strong> ${name}</p>
+                              <p><strong>Mobile No:</strong> ${mobileNo}</p>
+                              <p><strong>Gender:</strong> ${gender.value}</p>
+                              <p><strong>Hobbies:</strong> ${hobbies.join(", ")}</p>
+                              <p><strong>City:</strong> ${city}</p>`;
+
+                    document.getElementById("result").innerHTML = resultHtml;
+                });
+            </script>
+        </div>
+    </div>
+
+</body>
+
+</html>
